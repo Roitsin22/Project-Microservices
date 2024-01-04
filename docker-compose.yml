@@ -1,4 +1,4 @@
-# compose file
+# docker-compose file
 version: '3'
 
 services:

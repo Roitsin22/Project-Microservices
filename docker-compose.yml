@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
-      - /mnt/myserver:/var/lib/postgresql/data
+      - ~/myserver-database:/var/lib/postgresql/data
     networks:
       - project-network
 

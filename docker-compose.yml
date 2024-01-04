@@ -6,11 +6,11 @@ services:
     image: mypsql:latest
     environment:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-    #volumes:
-      #- /var/lib/jenkins/myserver-database:/var/lib/postgresql/data
     networks:
       - project-network
-
+    #volumes:
+      #- /var/lib/jenkins/myserver-database:/var/lib/postgresql/data
+      
   myredis:
     image: redis
     networks:

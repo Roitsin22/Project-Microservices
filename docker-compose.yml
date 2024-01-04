@@ -5,11 +5,12 @@ services:
   mypsql:
     image: mypsql:latest
     environment:
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_PASSWORD: mypassword
+      #POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     networks:
       - project-network
-    #volumes:
-      #- /var/lib/jenkins/myserver-database:/var/lib/postgresql/data
+    volumes:
+      - myserver-database:/var/lib/postgresql/data
       
   myredis:
     image: redis
@@ -36,3 +37,5 @@ services:
 
 networks:
   project-network:
+volumes:
+  myserver-database:

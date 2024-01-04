@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  mypsql:
+    image: mypsql:latest
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - /mnt/myserver:/var/lib/postgresql/data
+    networks:
+      - project-network
+
+  myredis:
+    image: redis
+    networks:
+      - project-network
+
+  myserver:
+    image: myserver:latest
+    networks:
+      - project-network
+
+  mynginx:
+    image: mynginx:latest
+    ports:
+     - "9000:80"
+    networks:
+      - project-network
+
+  myworker:
+    image: myworker:latest
+    networks:
+      - project-network
+
+
+networks:
+  project-network:

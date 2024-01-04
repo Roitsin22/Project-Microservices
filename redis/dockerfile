@@ -1,0 +1,11 @@
+
+FROM redis:latest
+
+# Copy conf file
+COPY redis.conf /usr/local/etc/redis/redis.conf
+
+# Expose port
+EXPOSE 6379
+
+# Restart Redis
+CMD ["redis-server", "/usr/local/etc/redis/redis.conf"]

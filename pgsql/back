@@ -1,0 +1,15 @@
+FROM postgres:latest
+
+   #env variables
+ENV POSTGRES_DB=mydb
+ENV POSTGRES_USER=myuser
+ENV POSTGRES_PASSWORD=mypassword
+
+RUN echo "host all all 0.0.0.0/0 md5" >> /var/lib/postgresql/data/pg_hba.conf
+   # Port
+EXPOSE 5432
+
+
+#CMD ["postgres"]
+
+

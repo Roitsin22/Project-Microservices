@@ -1,0 +1,37 @@
+FROM python:3.8.18
+
+
+ENV DEBUG="True"
+ENV CELERY_BROKER_URL="redis://myredis:6379/0"
+ENV CELERY_RESULT_BACKEND="redis://myredis:6379/0"
+ENV DJANGO_DB="postgresql"
+ENV POSTGRES_HOST="mypsql"
+ENV POSTGRES_NAME="mydb"
+ENV POSTGRES_USER="myuser"
+ENV POSTGRES_PASSWORD="mypassword"
+ENV POSTGRES_PORT="5432"
+
+# Set the working directory
+WORKDIR /home
+
+# Copy the application code
+COPY ./ /home
+
+
+RUN pip install --upgrade pip 
+RUN pip install  -r requirements.txt 
+
+# Ins  tall Gunicorn
+RUN pip install gunicorn
+
+# Expose port 8000
+EXPOSE 8000
+
+
+
+RUN chmod +x /home/backend/server-entrypoint.sh
+
+CMD ["./backend/server-entrypoint.sh"]
+#COPY . .
+#RUN python3 manage.py migrate
+#CMD ["gunicorn", "backend.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "4", "--threads", "4"]

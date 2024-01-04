@@ -1,0 +1,16 @@
+FROM nginx:latest
+
+     #For index file    
+
+#RUN rm /usr/share/nginx/html/index.html
+#COPY ./index.html /usr/share/nginx/html 
+
+      # For  conf file
+
+RUN rm /etc/nginx/conf.d/default.conf
+COPY ./default.conf /etc/nginx/conf.d
+
+EXPOSE 80
+
+# Restart Nginx
+CMD ["nginx", "-g", "daemon off;"]
